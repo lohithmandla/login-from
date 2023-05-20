@@ -1,0 +1,27 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+<body bgcolor="aqua" style="text-align: center;">
+	  <h1>login page processing</h1>
+	  <div th:if="${param.regsuccess}">
+		  <p style="color: green;">registration successfull</p>
+	  </div>
+	  <form method="post" th:action="@{/loginprosess}" th:object="${user}">
+		  <label>email:</label>
+		  <input type="text" th:field="*{email}" required/><br><br>
+		  <label>password:</label>
+		  <input type="text" th:field="*{password}" required/><br><br>
+		  <button type="submit">login</button>
+	  </form>
+	  <div th:if="${param.nouser}">
+		  <p style="color:red;">you are not registered please register</p>
+	  </div>
+	   <div th:if="${param.loginfail}">
+		  <p style="color: red;">invalid username and password</p>
+	  </div>
+	  <div th:if="${param.loginsuccess}">
+		  <p style="color: green;">login successfull</p>
+	  </div>
+	  <div>
+		  <a href="/register">click here to register</a>
+	  </div>
+</body>
+</html>
